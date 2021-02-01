@@ -6,30 +6,61 @@ public class Calculator {
 
     public static void main(String[] args) {
 
-        Scanner reader = new Scanner(System.in);
+        double[] results = new double[10];
+        int count = 0;
 
-        System.out.println("Введите 2 числа ");
+        for (int i = 0; i < results.length; i++) {
+            Scanner reader = new Scanner(System.in);
 
-        double first = reader.nextDouble();
-        double second = reader.nextDouble();
+            System.out.println("Введите 2 числа ");
 
-        System.out.println("Введите оператор: (+, -, *, /): ");
-        char operator = reader.next().charAt(0);
+            double first = reader.nextDouble();
+            double second = reader.nextDouble();
 
-        double result;
+            System.out.println("Введите оператор: (+, -, *, /): ");
+            char operator = reader.next().charAt(0);
 
-        switch (operator) {
-            case '+' -> result = first + second;
-            case '-' -> result = first - second;
-            case '*' -> result = first * second;
-            case '/' -> result = first / second;
-            default -> {
-                System.out.println("Введите корректный оператор");
+            double result;
+
+            switch (operator) {
+                case '+' -> result = first + second;
+                case '-' -> result = first - second;
+                case '*' -> result = first * second;
+                case '/' -> result = first / second;
+                default -> {
+                    System.out.println("Введите корректный оператор");
+                    return;
+                }
+            }
+            System.out.printf("%.1f %c %.1f = %.1f \n", first, operator, second, result);
+            results[i] = result;
+            count++;
+
+            if (count == 10) {
+                int count5 = 1;
+                System.out.println("Место в таблице закончилось. Ваши результаты: ");
+                for (double v : results) {
+                    System.out.println(count5 + ". " + v);
+                    count5++;
+                }
+            }
+
+            System.out.println("Для выхода из ппрограммы напечатайте Выход");
+            String exit = reader.next();
+
+            if (exit.equals("Выход")) {
+                int count3 = 1;
+                System.out.println("Вы вышли из программы. Ваши результаты: ");
+                for (double res : results) {
+                    if (res != 0) {
+                        System.out.println(count3 + ". " + res);
+                        count3++;
+                    }
+                }
                 return;
             }
-        }
-        System.out.printf("%.1f %c %.1f = %.1f", first, operator, second, result);
 
+        }
     }
 }
 
