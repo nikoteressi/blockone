@@ -45,7 +45,7 @@ public class Calculator {
                 }
             }
 
-            System.out.println("Для выхода из ппрограммы напечатайте Выход");
+            System.out.println("Для выхода из программы напечатайте Выход");
             String exit = reader.next();
 
             if (exit.equals("Выход")) {
