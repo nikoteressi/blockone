@@ -2,40 +2,38 @@ package calculator;
 
 import java.util.Scanner;
 
-public class CalculatorWhile {
+public class CalculatorDoWhile {
 
     public static void main(String[] args) {
-
         double[] results = new double[10];
-
         Scanner reader = new Scanner(System.in);
-        int count = 0;
         double first;
         double second;
         char operator;
+        int count = 0;
 
-
-        while (count < results.length) {
+        do {
             System.out.println("Введите 2 числа ");
+
             first = reader.nextDouble();
             second = reader.nextDouble();
+
             operator = readOperator(reader);
             results[count] = makeOperation(first, second, operator);
 
             System.out.printf("%.1f %c %.1f = %.1f \n", first, operator, second, results[count]);
             count++;
 
-            if (count < results.length) {
-                System.out.println("Для выхода из программы напечатайте Выход: ");
-                System.out.println("Для продолжения нажмите Enter");
-                reader.nextLine();
-                String line = reader.nextLine();
-                if ("выход".equalsIgnoreCase(line)) {
-                    System.out.println();
-                    break;
-                }
+            System.out.println("Для выхода напечатайте Выход: ");
+            System.out.println("Для продолжения нажмите Enter");
+            reader.nextLine();
+            String line = reader.nextLine();
+            if ("выход".equalsIgnoreCase(line)) {
+                System.out.println();
+                break;
             }
         }
+        while (count < results.length);
 
         reader.close();
 
